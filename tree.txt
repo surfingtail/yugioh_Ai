@@ -1,0 +1,129 @@
+yugioh-deck-ai/
+│
+├─ README.md
+├─ LICENSE
+├─ .gitignore
+├─ requirements.txt
+├─ .env.example
+│
+├─ config/
+│  ├─ settings.py
+│  └─ sources.json
+│
+├─ data/
+│  ├─ raw/
+│  │  ├─ cards/
+│  │  ├─ banlists/
+│  │  └─ translations/
+│  │
+│  ├─ normalized/
+│  │  ├─ cards/
+│  │  ├─ banlists/
+│  │  └─ translations/
+│  │
+│  ├─ cache/
+│  │  └─ requests/
+│  │
+│  ├─ sample/
+│  │  ├─ sample_cards.json
+│  │  └─ sample_banlists.json
+│  │
+│  └─ db/
+│     ├─ yugioh.db
+│     └─ test.db
+│
+├─ sql/
+│  ├─ schema.sql
+│  ├─ indexes.sql
+│  ├─ seeds.sql
+│  └─ views.sql
+│
+├─ src/
+│  ├─ __init__.py
+│  │
+│  ├─ core/
+│  │  ├─ paths.py
+│  │  ├─ logger.py
+│  │  ├─ exceptions.py
+│  │  └─ enums.py
+│  │
+│  ├─ fetchers/
+│  │  ├─ __init__.py
+│  │  ├─ ygoprodeck_fetcher.py
+│  │  ├─ neuron_fetcher.py
+│  │  ├─ namuwiki_fetcher.py
+│  │  └─ yaml_yugi_fetcher.py
+│  │
+│  ├─ normalizers/
+│  │  ├─ __init__.py
+│  │  ├─ card_normalizer.py
+│  │  ├─ banlist_normalizer.py
+│  │  ├─ translation_normalizer.py
+│  │  └─ text_cleaner.py
+│  │
+│  ├─ matchers/
+│  │  ├─ __init__.py
+│  │  ├─ card_matcher.py
+│  │  └─ name_resolver.py
+│  │
+│  ├─ importers/
+│  │  ├─ __init__.py
+│  │  ├─ card_importer.py
+│  │  ├─ banlist_importer.py
+│  │  └─ translation_importer.py
+│  │
+│  ├─ db/
+│  │  ├─ __init__.py
+│  │  ├─ connection.py
+│  │  ├─ init_db.py
+│  │  └─ migration.py
+│  │
+│  ├─ repositories/
+│  │  ├─ __init__.py
+│  │  ├─ cards_repository.py
+│  │  ├─ banlists_repository.py
+│  │  ├─ archetypes_repository.py
+│  │  └─ translations_repository.py
+│  │
+│  ├─ services/
+│  │  ├─ __init__.py
+│  │  ├─ card_search_service.py
+│  │  ├─ banlist_service.py
+│  │  ├─ deck_validation_service.py
+│  │  └─ card_detail_service.py
+│  │
+│  ├─ schemas/
+│  │  ├─ __init__.py
+│  │  ├─ card_schema.py
+│  │  ├─ banlist_schema.py
+│  │  └─ translation_schema.py
+│  │
+│  └─ utils/
+│     ├─ __init__.py
+│     ├─ file_utils.py
+│     ├─ date_utils.py
+│     ├─ json_utils.py
+│     └─ text_utils.py
+│
+├─ scripts/
+│  ├─ reset_db.py
+│  ├─ sync_cards.py
+│  ├─ sync_banlists.py
+│  ├─ sync_translations.py
+│  ├─ sync_all.py
+│  ├─ export_cards_json.py
+│  └─ verify_data.py
+│
+├─ tests/
+│  ├─ __init__.py
+│  ├─ test_card_normalizer.py
+│  ├─ test_banlist_normalizer.py
+│  ├─ test_card_matcher.py
+│  ├─ test_card_search_service.py
+│  └─ test_deck_validation_service.py
+│
+└─ docs/
+   ├─ database_design.md
+   ├─ data_pipeline.md
+   ├─ source_policy.md
+   └─ api_plan.md
