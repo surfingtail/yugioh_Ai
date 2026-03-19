@@ -7,7 +7,7 @@ def get_db_connection():
         conn = sqlite3.connect(DB_PATH)
         return conn
     except sqlite3.Error as e:
-        print(f"Error connecting to database: {e}")
+        print(f"에러가 발생했습니다: {e}")
         return None
 
 def close_db_connection(conn):
@@ -15,6 +15,6 @@ def close_db_connection(conn):
         try:
             conn.close()
         except sqlite3.Error as e:
-            print(f"Error closing database connection: {e}")
+            print(f"에러가 발생했습니다: {e}")
             return None
         

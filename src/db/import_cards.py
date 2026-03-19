@@ -7,7 +7,7 @@ def import_cards():
     conn = get_db_connection()
 
     if conn is None:
-        print("DB connection failed")
+        print("데이터베이스 연결에 실패했습니다: 연결 오류")
         return
 
     try:
@@ -73,10 +73,10 @@ def import_cards():
             ))
 
         conn.commit()
-        print("Cards imported successfully")
+        print("카드들이 성공적으로 가져와졌습니다.")
 
     except Exception as e:
-        print(f"Error importing cards: {e}")
+        print(f"카드 가져오기 중 오류가 발생했습니다: {e}")
 
     finally:
         close_db_connection(conn)

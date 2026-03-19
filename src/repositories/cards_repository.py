@@ -1,18 +1,37 @@
 from src.db.connection import get_db_connection, close_db_connection
 
-def search_cards_by_name(keyword):
+def search_cards(filters):
     conn = get_db_connection()
 
     try:
-        cursor = conn.execute(
-            """
-            SELECT card_id, name_ko, card_kind, atk, defense
-            FROM cards
-            WHERE name_ko LIKE ?
-            """,
-            (f"%{keyword}%",)
-        )
+        query = "SELECT card_id, name_ko, card_kind, atk, defense FROM cards WHERE 1=1"
+        params = []
 
+        if filters.get("name"):
+            query += " AND name_ko LIKE ?"
+            params.append(f"%{filters['name']}%")
+
+        if filters.get("card_kind"):
+            query += " AND card_kind = ?"
+            params.append(filters["card_kind"])
+
+        if filters.get("min_atk") is not None:
+            query += " AND atk >= ?"
+            params.append(filters["min_atk"])
+
+        if filters.get("max_atk") is not None:
+            query += " AND atk <= ?"
+            params.append(filters["max_atk"])
+
+        if filters.get("min_defense") is not None:
+            query += " AND defense >= ?"
+            params.append(filters["min_defense"])
+        
+        if filters.get("max_defense") is not None:
+            query += " AND defense <= ?"
+            params.append(filters["max_defense"])
+        
+        cursor = conn.execute(query, params)
         rows = cursor.fetchall()
 
         card_data = [
@@ -27,10 +46,11 @@ def search_cards_by_name(keyword):
         ]
 
         return card_data
-    
-    except Exception as e:
-        print(f"Error searching cards: {e}")
+
+
+    except Exception:
         return []
     
     finally:
         close_db_connection(conn)
+    

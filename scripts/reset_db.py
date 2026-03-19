@@ -8,7 +8,7 @@ def reset_db():
 
     if DB_PATH.exists():
         os.remove(DB_PATH)
-        print("Old database removed")
+        print("기존 데이터베이스 파일이 삭제되었습니다.")
 
     init_db()
 
