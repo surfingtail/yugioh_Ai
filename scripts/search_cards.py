@@ -1,5 +1,6 @@
 from src.repositories.cards_repository import search_cards
 from src.services.card_formatter import format_card
+from src.services.int_parser import parse_optional_int
 
 if __name__ == "__main__":
 
@@ -8,46 +9,21 @@ if __name__ == "__main__":
         name = input("카드 이름:")
         if name:
             filters["name"] = name
-
         card_kind = input("카드 종류 (Monster, Spell, Trap):")
         if card_kind:
             filters["card_kind"] = card_kind
         min_atk = input("최소 공격력:")
         if min_atk:
-            try:
-                filters["min_atk"] = int(min_atk)
-            except:
-                if min_atk == "":
-                    min_atk = None
-                else:
-                    raise ValueError("최소 공격력은 숫자여야 합니다.")
+            filters["min_atk"] = parse_optional_int(min_atk, "최소 공격력")
         max_atk = input("최대 공격력:")
         if max_atk:
-            try:
-                filters["max_atk"] = int(max_atk)
-            except:
-                if max_atk == "":
-                    max_atk = None
-                else:
-                    raise ValueError("최대 공격력은 숫자여야 합니다.")
+            filters["max_atk"] = parse_optional_int(max_atk, "최대 공격력")
         min_defense = input("최소 수비력:")
         if min_defense:
-            try:
-                filters["min_defense"] = int(min_defense)
-            except:
-                if min_defense == "":
-                    min_defense = None
-                else:
-                    raise ValueError("최소 수비력은 숫자여야 합니다.")
+            filters["min_defense"] = parse_optional_int(min_defense, "최소 수비력")
         max_defense = input("최대 수비력:")
         if max_defense:
-            try:
-                filters["max_defense"] = int(max_defense)
-            except:
-                if max_defense == "":
-                    max_defense = None
-                else:
-                    raise ValueError("최대 수비력은 숫자여야 합니다.")
+            filters["max_defense"] = parse_optional_int(max_defense, "최대 수비력")
 
     except Exception as e:
         print(f"입력 형식이 잘못되었습니다: {e}")
