@@ -27,6 +27,10 @@ def search_cards_by_name(keyword):
         ]
 
         return card_data
-
+    
+    except Exception as e:
+        print(f"Error searching cards: {e}")
+        return []
+    
     finally:
         close_db_connection(conn)

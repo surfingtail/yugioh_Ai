@@ -1,7 +1,12 @@
-from src.db.search_cards import search_cards_by_name
+from src.repositories.cards_repository import search_cards_by_name
+from src.services.card_formatter import format_card
 
 if __name__ == "__main__":
-    keyword = input("검색할 카드 이름을 입력하세요: ")
+    keyword = input("Enter a keyword to search for cards: ")
     results = search_cards_by_name(keyword)
-
-    print(f"검색 결과: {results}")
+    if results:
+        for card in results:
+            print(format_card(card))
+            print("-" * 40)
+    else:
+            print("No cards found matching the keyword.")
