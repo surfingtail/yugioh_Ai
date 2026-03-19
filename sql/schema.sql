@@ -7,30 +7,30 @@ CREATE TABLE IF NOT EXISTS cards (
     pendulum_desc_ko TEXT,
 
     card_kind TEXT NOT NULL
-        CHECK (card_kind IN ('Monster', 'Spell', 'Trap')),
+        CHECK (card_kind IN ('몬스터', '마법', '함정')),
 
     spell_type TEXT
-        CHECK (spell_type IN ('Normal', 'Field', 'Equip', 'Quick-Play', 'Continuous', 'Ritual')),
+        CHECK (spell_type IN ('일반', '필드', '장비', '속공', '지속', '의식')),
 
     trap_type TEXT
-        CHECK (trap_type IN ('Normal', 'Continuous', 'Counter')),
+        CHECK (trap_type IN ('일반', '지속', '카운터')),
 
     monster_type TEXT
-        CHECK (monster_type IN ('Normal', 'Effect', 'Fusion', 'Synchro', 'Xyz', 'Ritual', 'Link')),
+        CHECK (monster_type IN ('일반', '효과', '융합', '싱크로', '엑시즈', '의식', '링크')),
 
     is_pendulum INTEGER NOT NULL DEFAULT 0
         CHECK (is_pendulum IN (0, 1)),
 
     attribute TEXT
-        CHECK (attribute IN ('WATER', 'FIRE', 'WIND', 'EARTH', 'LIGHT', 'DARK', 'DIVINE')),
+        CHECK (attribute IN ('물', '화염', '바람', '땅', '빛', '어둠', '신')),
 
     race TEXT
         CHECK (race IN (
-            'INSECT', 'DINOSAUR', 'MACHINE', 'DRAGON', 'SPELLCASTER', 'AQUA',
-            'THUNDER', 'WINGEDBEAST', 'CYBERSE', 'PSYCHIC', 'PLANT', 'FIEND',
-            'ROCK', 'BEAST', 'BEASTWARRIOR', 'FISH', 'ZOMBIE', 'WARRIOR',
-            'FAIRY', 'REPTILE', 'SEASERPENT', 'PYRO', 'WYRM', 'ILLUSION',
-            'DIVINEBEAST', 'CREATORGOD'
+            '곤충족', '공룡족', '기계족', '드래곤족', '마법사족', '물족',
+            '번개족', '비행야수족', '사이버스족', '사이킥족', '식물족', '악마족',
+            '암석족', '야수족', '야수전사족', '어류족', '언데드족', '전사족',
+            '천사족', '파충류족', '해룡족', '화염족', '환룡족', '환상마족',
+            '환신야수족', '창조신족'
         )),
 
     is_tuner INTEGER NOT NULL DEFAULT 0
@@ -62,7 +62,7 @@ CREATE TABLE IF NOT EXISTS cards (
         CHECK (link_marker_count BETWEEN 0 AND 8),
 
     link_marker INTEGER
-        CHECK (link_marker BETWEEN 0 AND 255), -- 좌측 하단부터 반시계방향 비트마스크
+        CHECK (link_marker BETWEEN 0 AND 255), -- 좌측 상단부터 시계방향 비트마스크 1:좌상, 2:상, 4:우상, 8:우, 16:우하, 32:하, 64:좌하, 128:좌
 
     atk INTEGER CHECK (atk >= 0),
     defense INTEGER CHECK (defense >= 0),

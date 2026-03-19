@@ -4,7 +4,7 @@ def search_cards(filters):
     conn = get_db_connection()
 
     try:
-        query = "SELECT card_id, name_ko, card_kind, atk, defense FROM cards WHERE 1=1"
+        query = "SELECT card_id, name_ko, desc_ko, pendulum_desc_ko, card_kind, spell_type, trap_type, monster_type, is_pendulum, attribute, race, is_tuner, is_special_summon, is_flip, is_toon, is_spirit, is_union, is_gemini, level, rank, pendulum_scale, link_marker_count, link_marker, atk, defense, is_official_translation FROM cards WHERE 1=1"
         params = []
 
         if filters.get("name"):
@@ -38,9 +38,30 @@ def search_cards(filters):
             {
                 "card_id": row[0],
                 "name_ko": row[1],
-                "card_kind": row[2],
-                "atk": row[3],
-                "defense": row[4]
+                "desc_ko": row[2],
+                "pendulum_desc_ko": row[3],
+                "card_kind": row[4],
+                "spell_type": row[5],
+                "trap_type": row[6],
+                "monster_type": row[7],
+                "is_pendulum": row[8],
+                "attribute": row[9],
+                "race": row[10],
+                "is_tuner": row[11],
+                "is_special_summon": row[12],
+                "is_flip": row[13],
+                "is_toon": row[14],
+                "is_spirit": row[15],
+                "is_union": row[16],
+                "is_gemini": row[17],
+                "level": row[18],
+                "rank": row[19],
+                "pendulum_scale": row[20],
+                "link_marker_count": row[21],
+                "link_marker": row[22],
+                "atk": row[23],
+                "defense": row[24],
+                "is_official_translation": row[25]
             }
             for row in rows
         ]
