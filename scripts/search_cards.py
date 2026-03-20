@@ -9,7 +9,7 @@ if __name__ == "__main__":
         name = input("카드 이름:").strip()
         if name:
             filters["name"] = name
-        card_kind = input("카드 종류 (Monster, Spell, Trap):").strip()
+        card_kind = input("카드 종류 (몬스터, 마법, 함정):").strip()
         if card_kind:
             filters["card_kind"] = card_kind
         min_atk = input("최소 공격력:").strip()
