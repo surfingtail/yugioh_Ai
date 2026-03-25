@@ -15,8 +15,10 @@ CREATE TABLE IF NOT EXISTS cards (
     trap_type TEXT
         CHECK (trap_type IN ('일반', '지속', '카운터')),
 
+    is_effect INTEGER NOT NULL DEFAULT 0
+        CHECK (is_effect IN (0, 1, 2)), --2는 몬스터 아님
     monster_type TEXT
-        CHECK (monster_type IN ('일반', '효과', '융합', '싱크로', '엑시즈', '의식', '링크')),
+        CHECK (monster_type IN ('없음','융합', '싱크로', '엑시즈', '의식', '링크')),
 
     is_pendulum INTEGER NOT NULL DEFAULT 0
         CHECK (is_pendulum IN (0, 1)),
