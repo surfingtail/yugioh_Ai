@@ -2,12 +2,13 @@ def format_card(card):
     return_value = f"[{card['name_ko']}]\n종류: {card['card_kind']}\n"
     if card['card_kind'] == "몬스터":
         return_value += f"속성: {card['attribute']}\n종족: {card['race']}\n"
-        if card['is_effect'] == 1:
-            return_value += "효과 "
-        elif card['is_effect'] == 0:
-            return_value += "일반 "
+        return_value += "몬스터 종류:"
         if card['monster_type'] != "없음" and card['monster_type'] is not None:
-            return_value += f"몬스터 종류: {card['monster_type']}"
+            return_value += f"{card['monster_type']}"
+        if card['is_effect'] == 1:
+            return_value += " 효과"
+        elif card['is_effect'] == 0:
+            return_value += " 일반"
         if card['is_pendulum']:
             return_value += " 펜듈럼"
         if card['is_tuner']:
@@ -35,21 +36,21 @@ def format_card(card):
             return_value += f"링크:({card['link_marker_count']}개)\n링크 마커 방향: "
             checker = card['link_marker']
             if checker & 1:
-                return_value += "↖"
+                return_value += " ↖"
             if checker & 2:
-                return_value += "↑"
+                return_value += " ↑"
             if checker & 4:
-                return_value += "↗"
+                return_value += " ↗"
             if checker & 8:
-                return_value += "←"
+                return_value += " ←"
             if checker & 16:
-                return_value += "→"
+                return_value += " →"
             if checker & 32:
-                return_value += "↙"
+                return_value += " ↙"
             if checker & 64:
-                return_value += "↓"
+                return_value += " ↓"
             if checker & 128:
-                return_value += "↘"
+                return_value += " ↘"
             return_value += "\n" 
         return_value += f"공격력: {card['atk']}\n"
         if card['defense'] is not None:

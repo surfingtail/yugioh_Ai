@@ -23,6 +23,7 @@ def import_cards():
                     card_kind,
                     spell_type,
                     trap_type,
+                    is_effect,
                     monster_type,
                     is_pendulum,
                     attribute,
@@ -42,7 +43,7 @@ def import_cards():
                     atk,
                     defense,
                     is_official_translation
-                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             """, (
                 card.get("card_id"),
                 card.get("name_ko"),
@@ -51,6 +52,7 @@ def import_cards():
                 card.get("card_kind"),
                 card.get("spell_type"),
                 card.get("trap_type"),
+                card.get("is_effect"),
                 card.get("monster_type"),
                 card.get("is_pendulum"),
                 card.get("attribute"),
